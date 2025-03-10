@@ -1,43 +1,21 @@
-// 3. Convert the Linear Search into a Binary Search.
+// 3. Reverse an array using a loop.
 
 package neil;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class neilneil {
+    public static void main(String[] args) {
+        int[] numbers = {10, 20, 30, 40, 50};
+        int n = numbers.length;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		  int[] arr = {5, 1, 4, 2, 8};
+        for (int i = 0; i < n / 2; i++) {
+            int temp = numbers[i];
+            numbers[i] = numbers[n - i - 1];
+            numbers[n - i - 1] = temp;
+        }
 
-	        Arrays.sort(arr);
-
-	        Scanner scanner = new Scanner(System.in);
-	        System.out.print("Enter a number to search: ");
-	        int target = scanner.nextInt();
-
-	        int left = 0, right = arr.length - 1;
-	        boolean found = false;
-
-	        while (left <= right) {
-	            int mid = left + (right - left) / 2;
-
-	            if (arr[mid] == target) {
-	                System.out.println("Element found at index: " + mid);
-	                found = true;
-	                break;
-	            } else if (arr[mid] < target) {
-	                left = mid + 1; 
-	            } else {
-	                right = mid - 1; 
-	            }
-	        }
-
-	        if (!found) {
-	            System.out.println("Element not found in the array.");
-	        }
-
-	        scanner.close();
-	}
-
+        System.out.println("Reversed Array:");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+    }
 }

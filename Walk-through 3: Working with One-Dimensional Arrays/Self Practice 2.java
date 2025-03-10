@@ -1,42 +1,28 @@
-// 2. Implement insertion sort on an array of strings.
+// 2. Implement a program to remove duplicates from an array.
 
 package neil;
-import java.util.Scanner;
+
+import java.util.Arrays;
 
 public class neilneil {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 2, 3, 4, 4, 5};
+        Arrays.sort(numbers);
+        int[] temp = new int[numbers.length];
+        int j = 0;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		  Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < numbers.length - 1; i++) {
+            if (numbers[i] != numbers[i + 1]) {
+                temp[j++] = numbers[i];
+            }
+        }
+        temp[j++] = numbers[numbers.length - 1];
 
-	        System.out.print("Enter the number of words: ");
-	        int n = scanner.nextInt();
-	        scanner.nextLine();
+        int[] uniqueArray = Arrays.copyOf(temp, j);
 
-	        String[] arr = new String[n];
-
-	        System.out.println("Enter " + n + " words:");
-	        for (int i = 0; i < n; i++) {
-	            arr[i] = scanner.nextLine();
-	        }
-
-	        for (int i = 1; i < arr.length; i++) {
-	            String key = arr[i];
-	            int j = i - 1;
-
-	            while (j >= 0 && arr[j].compareTo(key) > 0) {
-	                arr[j + 1] = arr[j];
-	                j--;
-	            }
-	            arr[j + 1] = key;
-	        }
-
-	        System.out.print("Sorted Words: ");
-	        for (String word : arr) {
-	            System.out.print(word + " ");
-	        }
-
-	        scanner.close();
-	}
-
+        System.out.println("Array after removing duplicates:");
+        for (int num : uniqueArray) {
+            System.out.print(num + " ");
+        }
+    }
 }

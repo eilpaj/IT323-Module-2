@@ -1,42 +1,25 @@
-// 1. Modify the program to accept user input for an array.
+// 1. Write a program that merges two arrays
 
 package neil;
-import java.util.Scanner;
 
 public class neilneil {
+    public static void main(String[] args) {
+        int[] array1 = {1, 3, 5};
+        int[] array2 = {2, 4, 6};
+        int length1 = array1.length;
+        int length2 = array2.length;
+        int[] mergedArray = new int[length1 + length2];
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	    Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter the number of elements: ");
-        int n = scanner.nextInt();
-
-        int[] arr = new int[n];
-
-        System.out.println("Enter " + n + " numbers:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
+        for (int i = 0; i < length1; i++) {
+            mergedArray[i] = array1[i];
+        }
+        for (int i = 0; i < length2; i++) {
+            mergedArray[length1 + i] = array2[i];
         }
 
-        for (int i = 0; i < arr.length - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
-                }
-            }
-            int temp = arr[minIndex];
-            arr[minIndex] = arr[i];
-            arr[i] = temp;
-        }
-
-        System.out.print("Sorted Array: ");
-        for (int num : arr) {
+        System.out.println("Merged Array:");
+        for (int num : mergedArray) {
             System.out.print(num + " ");
         }
-
-        scanner.close();
-	}
-
+    }
 }
